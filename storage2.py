@@ -52,6 +52,33 @@ def find_product_by_name(name=None):
 
     return returnees
 
+def product_price_summary():
+    total_price=0
+    for product in products:
+        total_price += product['price']
+    return total_price
+
+def product_price_average():
+    total_price=0
+    product_count = len(products)
+    for product in products:
+        total_price += product['price']
+    return total_price/product_count
+
+def cheapest_product():
+    cheapest_product_price = products[0]['price']
+    for product in products:
+        if product['price'] < cheapest_product_price:
+            cheapest_product_price = product['price']
+    return [product for product in products if product['price'] == cheapest_product_price]
+
+def most_expensive_product():
+    most_expensive_product_price = products[0]['price']
+    for product in products:
+        if product['price'] > most_expensive_product_price:
+            most_expensive_product_price = product['price']
+    return [product for product in products if product['price'] == most_expensive_product_price]
+
 
 
 def menu():
@@ -82,6 +109,26 @@ def menu():
     elif choice == 3:
         print("Prosim zadej co hledas")
         search_product()
+        print("")
+        menu()
+    elif choice == 4:
+        print("Celkova cena vsech produktu je:")
+        print(product_price_summary())
+        print("")
+        menu()
+    elif choice == 5:
+        print("Nejlevnejsi produkty:\n")
+        print_products(cheapest_product())
+        print("")
+        menu()
+    elif choice == 6:
+        print("Nejdrazsi produkty:\n")
+        print_products(most_expensive_product())
+        print("")
+        menu()
+    elif choice == 7:
+        print("Prumerna cena je:\n")
+        print(product_price_average())
         print("")
         menu()
     else:

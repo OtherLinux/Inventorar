@@ -79,7 +79,22 @@ def most_expensive_product():
             most_expensive_product_price = product['price']
     return [product for product in products if product['price'] == most_expensive_product_price]
 
-
+def change_product():
+    for product in products:
+        print(f"ID:{colorama.Fore.YELLOW}{products.index(product)}{colorama.Fore.RESET}  Název produktu: {colorama.Fore.YELLOW}{product['name']}{colorama.Fore.RESET}, cena: {colorama.Fore.YELLOW}{product['price']}${colorama.Fore.RESET}")
+    print("Zvol produkt z listu: ")
+    changee = int(input())
+    if 0 <= changee and changee < len(products):
+        print("\nPokud chcete zachovat hodnotu nechte prazdne\n")
+        print(f"Zvol nove jmeno ({products[changee]['name']})")
+        new_name = input()
+        print(f"Zvol novou cenu ({products[changee]['price']})")
+        new_price = input()
+        if new_name != '':
+            products[changee]['name'] = new_name
+        if new_price != '':
+            products[changee]['price'] = int(new_price)
+        print_products(highlight_product=products[changee])
 
 def menu():
     print("Vítej ve skladu")
@@ -129,6 +144,11 @@ def menu():
     elif choice == 7:
         print("Prumerna cena je:\n")
         print(product_price_average())
+        print("")
+        menu()
+    elif choice == 8:
+        print("Zmena produktu:\n")
+        change_product()
         print("")
         menu()
     else:

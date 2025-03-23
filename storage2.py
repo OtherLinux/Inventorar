@@ -63,36 +63,6 @@ def menu():
         add_product()
         print("")
         menu()
-    elif choice == 3:
-        print("Prosim zadej co hledas")
-        search_product()
-        print("")
-        menu()
-    elif choice == 4:
-        print("Celkova cena vsech produktu je:")
-        print(product_price_summary())
-        print("")
-        menu()
-    elif choice == 5:
-        print("Nejlevnejsi produkty:\n")
-        print_products(cheapest_product())
-        print("")
-        menu()
-    elif choice == 6:
-        print("Nejdrazsi produkty:\n")
-        print_products(most_expensive_product())
-        print("")
-        menu()
-    elif choice == 7:
-        print("Prumerna cena je:\n")
-        print(product_price_average())
-        print("")
-        menu()
-    elif choice == 8:
-        print("Zmena produktu:\n")
-        change_product()
-        print("")
-        menu()
     else:
         print("Zadal jsi špatně!\n")
         menu()

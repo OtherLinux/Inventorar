@@ -34,7 +34,23 @@ def add_product():
         'price': int(input("Zadej cenu:"))
     })
 
+def search_product():
+    found = find_product_by_name(input(""))
+    if found:
+        print("Nalezli jsme:\n")
+        print_products(found)
+    else:
+        print("Hledali jsme jak jsme mohly ale nenasli")
 
+def find_product_by_name(name=None):
+    if name is None:
+        return []
+    returnees = []
+    for product in products:
+        if name in product['name'].lower():
+            returnees.append(product)
+
+    return returnees
 
 
 
@@ -61,6 +77,11 @@ def menu():
     elif choice == 2:
         print("Přidání položky:")
         add_product()
+        print("")
+        menu()
+    elif choice == 3:
+        print("Prosim zadej co hledas")
+        search_product()
         print("")
         menu()
     else:
